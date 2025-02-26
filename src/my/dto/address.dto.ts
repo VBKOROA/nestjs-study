@@ -18,7 +18,7 @@ export class AddressDto {
   @IsInt()
   @Type(() => Number)
   buildingNumber: number;
-  
+
   // 상세 주소
   @IsOptional()
   @IsString()

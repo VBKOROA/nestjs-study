@@ -1,3 +1,3 @@
 export class CreatePostDto {
-    content: string;
+  content: string;
 }

@@ -7,7 +7,7 @@ import { Repository } from 'typeorm';
 export class PostService {
   constructor(
     @InjectRepository(Post)
-    private postRepository: Repository<Post>,
+    private readonly postRepository: Repository<Post>,
   ) {}
 
   /**
@@ -61,14 +61,14 @@ export class PostService {
     await this.postRepository.delete(id);
   }
 
-/**
- * 주어진 내용으로 새 게시물을 생성합니다.
- *
- * @param content 게시물의 내용입니다.
- * @returns void
- */
+  /**
+   * 주어진 내용으로 새 게시물을 생성합니다.
+   *
+   * @param content 게시물의 내용입니다.
+   * @returns void
+   */
   async create(content: string): Promise<void> {
-    let post = new Post();
+    const post = new Post();
     post.content = content;
     await this.postRepository.save(post);
   }

@@ -1,18 +1,31 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  OneToMany,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
+import { Comment } from '../comment/comment.entity';
 
 @Entity()
 export class Post {
-    @PrimaryGeneratedColumn()
-    id: number;
+  @PrimaryGeneratedColumn()
+  id: number;
 
-    @Column({
-        length: 10000
-    })
-    content: string;
+  @Column({
+    length: 10000,
+  })
+  content: string;
 
-    @CreateDateColumn()
-    createdAt: Date;
+  @CreateDateColumn()
+  createdAt: Date;
 
-    @UpdateDateColumn()
-    modifiedAt: Date;
+  @UpdateDateColumn()
+  modifiedAt: Date;
+
+  @OneToMany(() => Comment, (comment) => comment.post, {
+    cascade: ['remove'],
+  })
+  comments: Comment[];
 }
