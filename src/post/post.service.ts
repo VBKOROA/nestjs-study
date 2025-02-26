@@ -40,7 +40,7 @@ export class PostService {
    * @returns void
    */
   async update(id: number): Promise<void> {
-    this.postRepository.update(id, { content: 'Updated Post' });
+    await this.postRepository.update(id, { content: 'Updated Post' });
   }
 
   /**
@@ -50,7 +50,7 @@ export class PostService {
    * @param content 새로운 게시글 내용입니다.
    */
   async updateContent(id: number, content: string): Promise<void> {
-    this.postRepository.update(id, { content });
+    await this.postRepository.update(id, { content });
   }
 
   /**
@@ -58,6 +58,18 @@ export class PostService {
    * @param id 삭제할 게시물의 ID
    */
   async delete(id: number): Promise<void> {
-    this.postRepository.delete(id);
+    await this.postRepository.delete(id);
+  }
+
+/**
+ * 주어진 내용으로 새 게시물을 생성합니다.
+ *
+ * @param content 게시물의 내용입니다.
+ * @returns void
+ */
+  async create(content: string): Promise<void> {
+    let post = new Post();
+    post.content = content;
+    await this.postRepository.save(post);
   }
 }
