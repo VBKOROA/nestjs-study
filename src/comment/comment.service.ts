@@ -32,4 +32,12 @@ export class CommentService {
     comment.content = content;
     this.commendRepository.save(comment);
   }
+
+  /**
+   * ID에 해당하는 댓글을 삭제합니다.
+   * @param id 삭제할 댓글의 ID
+   */
+  async delete(id: number): Promise<void> {
+    await this.commendRepository.delete(id);
+  }
 }

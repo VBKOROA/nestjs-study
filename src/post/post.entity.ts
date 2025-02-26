@@ -24,8 +24,6 @@ export class Post {
   @UpdateDateColumn()
   modifiedAt: Date;
 
-  @OneToMany(() => Comment, (comment) => comment.post, {
-    cascade: ['remove'],
-  })
+  @OneToMany(() => Comment, (comment) => comment.post)
   comments: Comment[];
 }
