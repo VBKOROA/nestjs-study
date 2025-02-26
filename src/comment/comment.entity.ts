@@ -1,6 +1,7 @@
 import { Post } from 'src/post/post.entity';
 import {
   Column,
+  CreateDateColumn,
   Entity,
   JoinColumn,
   ManyToOne,
@@ -18,4 +19,7 @@ export class Comment {
   @ManyToOne(() => Post)
   @JoinColumn({ name: 'post_id' })
   post: Post;
+
+  @CreateDateColumn()
+  createdAt: Date;
 }
