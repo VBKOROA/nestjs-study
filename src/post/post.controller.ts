@@ -1,6 +1,6 @@
 import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Patch, Post } from '@nestjs/common';
 import { PostService } from './post.service';
-import { Post as PostEntity } from './entities/post.entity';
+import { Post as PostEntity } from './post.entity';
 import { UpdatePostDto } from './dtos/update-post.dto';
 import { CreatePostDto } from './dtos/create-post.dto';
 
