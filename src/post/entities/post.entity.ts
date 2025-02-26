@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class Post {
@@ -10,13 +10,9 @@ export class Post {
     })
     content: string;
 
-    @Column({
-        default: Date.now()
-    })
+    @CreateDateColumn()
     createdAt: Date;
 
-    @Column({
-        nullable: true
-    })
-    modifiedAt?: Date;
+    @UpdateDateColumn()
+    modifiedAt: Date;
 }

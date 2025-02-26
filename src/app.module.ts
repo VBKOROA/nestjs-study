@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { MyModule } from './my/my.module';
+import { PostModule } from './post/post.module';
 
 @Module({
   imports: [
@@ -13,10 +14,11 @@ import { MyModule } from './my/my.module';
       username: 'nestuser', // 유저 이름
       password: 'nestpassword', // 비밀번호
       database: 'nest_dev', // 데이터베이스 이름
-      entities: [__dirname + '/**/*.entity.ts'], // 엔티티 위치
+      entities: [__dirname + '/**/*.entity.{ts,js}'], // 엔티티 위치
       synchronize: true
     }),
-    MyModule
+    MyModule,
+    PostModule
   ],
   controllers: [AppController],
   providers: [AppService]
